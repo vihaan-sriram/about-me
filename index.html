@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="VihaanOS: A hacker's GUI simulating a custom OS, reflecting Vihaan Sriram's mind through tech, law, and environmental projects." />
+  <meta name="keywords" content="Vihaan Sriram, operating system, portfolio, technology, law, environment, The Lawkward Files" />
+  <meta name="author" content="Vihaan Sriram" />
+  <title>VihaanOS: The Hacker's GUI</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Howler.js for Sound -->
+  <script src="https://unpkg.com/howler@2.2.3/dist/howler.min.js"></script>
+</head>
+<body>
+  <!-- Boot Screen -->
+  <div class="boot-screen" id="boot-screen">
+    <canvas id="boot-canvas"></canvas>
+    <div class="boot-text" id="boot-text"></div>
+  </div>
+
+  <!-- Main OS -->
+  <div id="root" style="display: none;">
+    <div class="desktop">
+      <canvas id="neural-net"></canvas>
+
+      <!-- Desktop Icons -->
+      <div class="desktop-icon" id="vihaancore-icon" style="left: 20px; top: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 464H288c8.8 0 16-7.2 16-16V384h48v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H192V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16zM224 320H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H352V0H448c35.3 0 64 28.7 64 64V304c0 35.3-28.7 64-64 64H224V320zM352 128v96c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32z"/></svg>
+        VihaanCore
+      </div>
+      <div class="desktop-icon" id="projects-icon" style="left: 20px; top: 140px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm64 64V416H448V160H64z"/></svg>
+        Projects
+      </div>
+      <div class="desktop-icon" id="terminal-icon" style="left: 20px; top: 260px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm64 0V416H448V96H64zm80 64h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16zm96 96H368c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+        Terminal
+      </div>
+      <div class="desktop-icon" id="about-icon" style="left: 20px; top: 380px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/></svg>
+        About
+      </div>
+      <div class="desktop-icon" id="settings-icon" style="left: 120px; top: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-26.5c-12 7.1-24.6 12.7-37.8 16.5L280 464.6V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V464.6L176.2 448.1c-13.2-3.8-25.8-9.4-37.8-16.5L82.7 458.1c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 297.1 64 289.7 64 281.3c0-8.4 .6-16.8 1.7-25.4L22.4 216.5c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 26.5c12-7.1 24.6-12.7 37.8-16.5L232 47.4V32c0-17.7 14.3-32 32-32s32 14.3 32 32V47.4l39.8 16.5c13.2 3.8 25.8 9.4 37.8 16.5l55.7-26.5c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"/></svg>
+        Settings
+      </div>
+      <div class="desktop-icon" id="logs-icon" style="left: 120px; top: 140px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 32c17.7 0 32 14.3 32 32V400c0 8.8 7.2 16 16 16H432c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-44.2 0-80-35.8-80-80V64C0 46.3 14.3 32 32 32zM160 224c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H176c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H176c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H176c-8.8 0-16-7.2-16-16z"/></svg>
+        Logs
+      </div>
+      <div class="desktop-icon" id="quotes-icon" style="left: 120px; top: 260px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M128 192c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64s-28.7-64-64-64H192c-35.3 0-64 28.7-64 64zM320 320c0 35.3 28.7 64 64 64h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32c-35.3 0-64 28.7-64 64zm-192 0c0 35.3 28.7 64 64 64h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32c-35.3 0-64 28.7-64 64zM128 64c0 35.3 28.7 64 64 64h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32C156.7 64 128 35.3 128 0S156.7 0 192 0h32c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c-35.3 0-64 28.7-64 64z"/>
+        </svg>
+        Quotes
+      </div>
+    </div>
+
+    <!-- Windows -->
+    <div class="window" id="vihaancore-window" style="width: 800px; top: 80px; left: 100px;">
+      <div class="window-header">
+        <span>VihaanCore: Mind Map</span>
+        <span class="close-btn" onclick="closeWindow('vihaancore-window')">X</span>
+      </div>
+      <div class="window-content">
+        <canvas id="mind-map-canvas" class="mind-map-canvas"></canvas>
+      </div>
+    </div>
+
+    <div class="window" id="projects-window" style="width: 600px; top: 120px; left: 220px;">
+      <div class="window-header">
+        <span>Projects Explorer</span>
+        <span class="close-btn" onclick="closeWindow('projects-window')">X</span>
+      </div>
+      <div class="window-content">
+        <div class="section">
+          <h2>Projects</h2>
+          <p>A collection of my work spanning various interests.</p>
+          <div class="filter-buttons" role="tablist" aria-label="Filter projects by category">
+            <button class="filter-btn active" data-filter="all" role="tab">All</button>
+            <button class="filter-btn" data-filter="tech" role="tab">Tech</button>
+            <button class="filter-btn" data-filter="law" role="tab">Law</button>
+            <button class="filter-btn" data-filter="environment" role="tab">Environment</button>
+          </div>
+          <div id="projects-list">
+            <div class="project" data-category="tech">
+              <a href="https://github.com/VihaanToTheRescue/Unit-Converter-Application" target="_blank">
+                <h3>Unit Converter</h3>
+                <p>A versatile and user-friendly conversion tool built with PyQt5.</p>
+              </a>
+            </div>
+            <div class="project" data-category="tech">
+              <a href="https://github.com/VihaanToTheRescue/number-guessing-game" target="_blank">
+                <h3>Number Guessing Game</h3>
+                <p>A simple GUI-based guessing game made with Tkinter.</p>
+              </a>
+            </div>
+            <div class="project" data-category="law">
+              <a href="https://medium.com/@vihaanaadira11/the-future-of-legal-liability-in-the-age-of-autonomous-vehicles-whos-really-responsible-5de1079b9cdd" target="_blank">
+                <h3>Legal Liability & Autonomous Vehicles</h3>
+                <p>Exploring accountability in AI-driven transportation.</p>
+              </a>
+            </div>
+            <div class="project" data-category="environment">
+              <a href="https://www.ijraset.com/research-paper/assessing-the-impact-of-limited-access-on-irula-women-in-thethampakkam-pondicherry" target="_blank">
+                <h3>Water Sustainability & Irula Women</h3>
+                <p>Impact study on limited access to water in Pondicherry.</p>
+              </a>
+            </div>
+            <div class="project" data-category="law">
+              <a href="https://www.lawaudience.com/navigating-the-intersection-of-artificial-intelligence-and-intellectual-property-challenges-and-opportunities/" target="_blank">
+                <h3>AI & Intellectual Property</h3>
+                <p>Challenges at the junction of AI and IP laws.</p>
+              </a>
+            </div>
+            <div class="project" data-category="law environment">
+              <a href="https://ijlsa.com/paper/plastic-waste-and-the-law-strengthening-epr-to-combat-indias-growing-crisis/" target="_blank">
+                <h3>Plastic Waste & Law</h3>
+                <p>Strengthening EPR to fight India’s plastic crisis.</p>
+              </a>
+            </div>
+            <div class="project" data-category="environment">
+              <a href="https://www.youtube.com/watch?v=jhJhrAJoLzs" target="_blank">
+                <h3>Award-Winning Ocean Cleanliness Video</h3>
+                <p>A national award-winning video made for Wipro Earthian on ocean preservation in Pondicherry.</p>
+              </a>
+            </div>
+            <div class="project" data-category="law">
+              <a href="https://vihaantotherescue.github.io/The-Lawkward-Files/" target="_blank">
+                <h3>The Lawkward Files</h3>
+                <p>15 short stories in legal satire. Winner of the India Book of Records Achievers Award.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="terminal-window" style="width: 600px; top: 100px; left: 200px;">
+      <div class="window-header">
+        <span>Terminal</span>
+        <span class="close-btn" onclick="closeWindow('terminal-window')">X</span>
+      </div>
+      <div class="window-content terminal-panel">
+        <div class="terminal-history" id="terminal-history"></div>
+        <div class="terminal-input">
+          <span>> </span>
+          <input type="text" id="terminal-input" autofocus />
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="about-window" style="width: 600px; top: 140px; left: 240px;">
+      <div class="window-header">
+        <span>README.md</span>
+        <span class="close-btn" onclick="closeWindow('about-window')">X</span>
+      </div>
+      <div class="window-content">
+        <div class="section">
+          <h2>About Me</h2>
+          <p>Yo, I’m Vihaan, a 17-year-old dodging adulting like it’s a pop-up ad.<br>
+          I code apps when my Wi-Fi isn’t throwing a tantrum, bike to save the planet (or outrun my to-do list), and study law to win arguments with traffic lights.<br>
+          My brain’s 80% bad puns, 20% caffeine, and I survive on snacks and sheer chaos.<br>
+          Fitness? I sprint to the fridge during ad breaks.<br>
+          Social skills? I’m a face-to-face charmer and call-crushing pro, but chats and family functions turn me into a buffering robot—send pizza, stat.<br>
+          I’m saving the environment one reusable straw at a time while pretending I’ve got life figured out.<br>
+          Spoiler: I don’t, but I’m faking it with style.</p>
+          <div class="socials-icons">
+            <a href="mailto:vihaanaadira11@gmail.com" title="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49c-16.841 13.247-50.201 45.072-73.413 44.701-23.208 .375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646c21.857 17.205 60.134 55.186 103.062 54.955c42.717 .231 80.509-37.199 103.053-54.947c49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
+              Email
+            </a>
+            <a href="https://www.linkedin.com/in/vihaan-sriram-1675b932c/" target="_blank" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://instagram.com/vihaan.sriram" target="_blank" title="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.8 9.9 67.6 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="settings-window" style="width: 500px; top: 160px; left: 260px;">
+      <div class="window-header">
+        <span>Settings</span>
+        <span class="close-btn" onclick="closeWindow('settings-window')">X</span>
+      </div>
+      <div class="window-content settings-panel">
+        <div class="settings-item">
+          <span>Sound Volume</span>
+          <input type="range" id="sound-volume" min="0" max="1" step="0.1" value="0.2" />
+        </div>
+        <div class="settings-item">
+          <span>Particle Density</span>
+          <input type="range" id="particle-density" min="10" max="100" step="10" value="50" />
+        </div>
+        <div class="settings-item">
+          <span>Terminal Font Size</span>
+          <input type="range" id="terminal-font-size" min="10" max="18" step="1" value="14" />
+        </div>
+        <div class="settings-item">
+          <span>Comic Mode</span>
+          <button id="comic-mode-toggle" class="filter-btn">OFF</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="window" id="logs-window" style="width: 600px; top: 180px; left: 280px;">
+      <div class="window-header">
+        <span>System Logs</span>
+        <span class="close-btn" onclick="closeWindow('logs-window')">X</span>
+      </div>
+      <div class="window-content logs-panel" id="logs-content"></div>
+    </div>
+
+    <div class="window" id="quotes-window" style="width: 600px; top: 100px; left: 200px;">
+      <div class="window-header">
+        <span>Favourite Quotes</span>
+        <span class="close-btn" onclick="closeWindow('quotes-window')">X</span>
+      </div>
+      <div class="window-content">
+        <div class="section">
+          <h2>Your Space</h2>
+          <p><strong id="greeting">Hi there!</strong></p>
+          <input type="text" id="name-input" placeholder="Enter your name..." style="background: #111; color: #0f0; border: 1px solid #0f0; padding: 8px; width: 100%; margin: 8px 0;" />
+          <button id="mood-btn" class="filter-btn" style="margin: 10px 0;">Feeling chaotic?</button>
+        </div>
+        <div class="section">
+          <h2>Calvin & Hobbes Wisdom</h2>
+          <input type="text" id="quote-search" placeholder="Search quotes..." style="width: 100%; padding: 8px; margin-bottom: 10px; background: #111; color: #0f0; border: 1px solid #0f0;" />
+          <div id="quotes-list"></div>
+          <div id="favourites-list" style="margin-top: 20px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+      <button class="start-menu-btn" id="start-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 96C0 60.7 28.7 32 64 32H192c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm0 256c0-35.3 28.7-64 64-64H192c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V352zM320 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H384c-35.3 0-64-28.7-64-64V96zm0 256c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H384c-35.3 0-64-28.7-64-64V352z"/></svg>
+        Start
+      </button>
+      <div class="taskbar-right">
+        <span class="taskbar-clock" id="taskbar-clock"></span>
+      </div>
+    </div>
+
+    <!-- Start Menu -->
+    <div class="start-menu" id="start-menu">
+      <input type="text" id="start-search" placeholder="Search apps..." />
+      <div class="start-menu-item" onclick="viewWindow('vihaancore-window')">VihaanCore</div>
+      <div class="start-menu-item" onclick="viewWindow('projects-window')">Projects</div>
+      <div class="start-menu-item" onclick="viewWindow('terminal-window')">Terminal</div>
+      <div class="start-menu-item" onclick="viewWindow('about-window')">About</div>
+      <div class="start-menu-item" onclick="viewWindow('settings-window')">Settings</div>
+      <div class="start-menu-item" onclick="viewWindow('logs-window')">Logs</div>
+      <div class="start-menu-item" onclick="viewWindow('quotes-window')">Quotes</div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
